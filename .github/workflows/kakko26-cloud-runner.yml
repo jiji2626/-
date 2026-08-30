@@ -1,8 +1,7 @@
 name: KAKKO26 Cloud Runner
 
 on:
-  schedule:
-    - cron: '17 * * * *'
+  # Hourly schedule is enabled only after the owner-only Sites access gate is connected.
   workflow_dispatch:
 
 concurrency:
