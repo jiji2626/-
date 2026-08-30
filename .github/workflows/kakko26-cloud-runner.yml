@@ -1,16 +1,8 @@
 name: KAKKO26 Cloud Runner
 
 on:
-  push:
-    # One-time heartbeat proof without requiring a GitHub login.
-    branches: [main]
-    paths:
-      - '.github/workflows/kakko26-cloud-runner.yml'
-      - 'cloud-runner/kakko26-monitor.mjs'
   schedule:
-    # Temporary five-minute cadence for the first production heartbeat proof.
-    # Restore to `17 * * * *` after the first successful run is recorded.
-    - cron: '*/5 * * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 concurrency:
