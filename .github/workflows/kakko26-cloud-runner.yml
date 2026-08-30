@@ -16,9 +16,12 @@ permissions:
 jobs:
   operate:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
       - name: Monitor private operations without media transfer
         env:
           KAKKO26_SITE_URL: https://kakko26-opening-review-v5.tom-sakagami26.chatgpt.site
