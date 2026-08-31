@@ -1,6 +1,7 @@
 const SITE_URL = (process.env.KAKKO26_SITE_URL
   || 'https://kakko26-opening-review-v5.tom-sakagami26.chatgpt.site').replace(/\/$/, '');
 const OIDC_AUDIENCE = 'kakko26-sites-runner/v1';
+const SITES_BYPASS_TOKEN = process.env.KAKKO26_SITES_BYPASS_TOKEN;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -22,10 +23,16 @@ async function oidcToken() {
 }
 
 async function main() {
+  assert(SITES_BYPASS_TOKEN, 'Owner-only Sites access is not connected');
   const token = await oidcToken();
   const response = await fetch(`${SITE_URL}/api/cloud-runner/heartbeat`, {
     method: 'POST',
-    headers: { authorization: `Bearer ${token}` },
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${token}`,
+      'OAI-Sites-Authorization': `Bearer ${SITES_BYPASS_TOKEN}`,
+    },
+    body: JSON.stringify({ capabilities: ['monitor'] }),
   });
   const payload = await response.json().catch(() => ({}));
   assert(response.ok && payload.status === 'healthy',

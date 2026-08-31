@@ -1,8 +1,9 @@
 name: KAKKO26 Cloud Runner
 
 on:
-  # Hourly schedule is enabled only after the owner-only Sites access gate is connected.
   workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
 
 concurrency:
   group: kakko26-cloud-runner
@@ -24,4 +25,5 @@ jobs:
       - name: Monitor private operations without media transfer
         env:
           KAKKO26_SITE_URL: https://kakko26-opening-review-v5.tom-sakagami26.chatgpt.site
+          KAKKO26_SITES_BYPASS_TOKEN: ${{ secrets.KAKKO26_SITES_BYPASS_TOKEN }}
         run: node cloud-runner/kakko26-monitor.mjs
