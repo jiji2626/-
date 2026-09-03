@@ -1,6 +1,48 @@
 # Codex instructions — KAKKO26 / YouTube AI Editor coordination
 
-This repository is currently the GitHub coordination bridge for the owner's existing private YouTube AI Editor development workspace.
+## P0 — finish one publish-quality Long video first
+The owner has explicitly prioritized reaching the final edited Long-form video as soon as possible.
+
+**Speed must not come from lowering the quality of the video itself.** Defer analytics, Shorts optimization, dashboards, refactors, and future architecture instead.
+
+### P0 success condition
+Produce one reviewable Long-form output from the existing private/local YouTube AI Editor workflow that is good enough to become a publish candidate after owner review.
+
+Required quality bar:
+- natural cuts that preserve meaning and conversation flow
+- good pacing without excessive dead time or destructive over-cutting
+- stable, intelligible voice level with no obvious clipping or distracting noise
+- subtitles synchronized with speech, with obvious recognition errors and bad line breaks corrected where practical
+- no obvious aspect-ratio, crop, black-bar, scaling, resolution, frame-drop, end-cut, or A/V-sync failures
+- readable on-screen text; avoid unnecessary over-editing
+- a strong opening that remains faithful to the source context
+- coherent beginning-to-end structure around one clear topic
+- title and thumbnail that attract clicks without misrepresenting the content
+- final QC pass before the output is considered complete
+
+### P0 workflow
+1. Inspect the existing private/local implementation first.
+2. Reuse every working editing component possible.
+3. Select one strong Long topic/source.
+4. Complete cuts and structure.
+5. Complete audio cleanup/leveling.
+6. Complete subtitles/text treatment.
+7. Perform necessary visual framing adjustments.
+8. Generate/select one usable thumbnail and basic metadata.
+9. Render/export the final video.
+10. Run QC and produce a reviewable file.
+
+Do not block P0 on:
+- Shorts-channel decisions
+- advanced Shorts scoring
+- 30-day analytics dashboards
+- advanced audience-overlap analysis
+- automatic cadence optimization
+- competitor automation
+- complex trend scoring
+- automatic publishing decisions
+- broad UI work
+- refactors or architecture rewrites
 
 ## Safety boundary
 - Do **not** rebuild the private YouTube AI Editor application from scratch in this repository.
@@ -13,62 +55,8 @@ This repository is currently the GitHub coordination bridge for the owner's exis
 - YouTube channel: `ひろゆき2626`
 - Handle: `@hiroyuki2626`
 
-## Current product decision
-During the restart test, keep Long and Shorts on the same existing channel.
+## Later product direction
+After the first Long pipeline is working, keep Long and Shorts on the same existing channel for the initial restart experiment.
+Long remains the primary asset; Shorts are discovery/testing/conversion entry points into Long.
 
-- Long = primary content asset.
-- Shorts = discovery, testing, and conversion entry point into Long.
-- Do not create or assume a separate Shorts channel yet.
-
-## 30-day restart test
-- Long: 4–7/week, moving toward 1/day.
-- A second Long upload is allowed only for exceptionally strong/current topics.
-- Shorts: normally max 1/day.
-- Generate 2–3 Shorts candidates per Long/topic, score them, and select only the strongest candidate for publication.
-
-## Candidate scoring dimensions
-At minimum consider:
-- topical demand
-- freshness
-- performance of similar historical topics
-- opening hook strength
-- expected retention
-- suitability for conversion to the corresponding Long video
-
-The guiding rule is: **publish the item with the highest value today, not everything that can be generated.**
-
-## Intended content flow
-1. Ingest/source material in the private/local application.
-2. Produce one Long-form edit.
-3. Identify the strongest ~30–60 second segments.
-4. Produce 2–3 Shorts candidates.
-5. Score/rank candidates.
-6. Select the best Short.
-7. Link the Short to its corresponding Long when YouTube capabilities permit.
-
-## Analytics to retain for the 30-day decision
-- Shorts views
-- subscribers gained from Shorts
-- Long views
-- Long impressions
-- Long CTR
-- average view duration
-- average percentage viewed
-- new viewers
-- returning viewers
-- Shorts-to-Long traffic
-- related-video traffic
-- overlap between Shorts and Long audiences when available
-
-Only reconsider a separate Shorts channel if Shorts materially grow but fail to create meaningful Long-form discovery/conversion.
-
-## Implementation workflow for Codex
-When the private/local source becomes accessible:
-1. Inspect the existing implementation first.
-2. Map current Long/Shorts generation, selection, scheduling, publishing, and Analytics-learning behavior.
-3. Compare it with Issue #1 and `docs/youtube-content-strategy.md`.
-4. Propose the smallest compatible change set.
-5. Prefer configuration over hard-coded limits for posting frequency, number of Shorts candidates, thresholds, and scoring weights.
-6. Add tests before changing production behavior.
-
-See Issue #1 for the owner-approved direction.
+See Issue #1 and `docs/youtube-content-strategy.md` for the deferred Long/Shorts strategy.
